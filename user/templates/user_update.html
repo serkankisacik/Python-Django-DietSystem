@@ -1,0 +1,56 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Kullancı Güncelle | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+
+{% endblock %}
+
+
+{% block content %}
+
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{ user.first_name }} {{ user.last_name }}</h1>
+            <span class="color-text-a">
+                <a href="/user/update" class="btn btn-a">Update Profile</a>
+            <a href="/user/password" class="btn btn-a">Change Password</a>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Agent Single Star /-->
+  <section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+           <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Update</button>
+                    </div>
+                </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Agent Single End /-->
+ {% endblock %}

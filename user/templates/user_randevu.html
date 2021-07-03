@@ -1,0 +1,91 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Randevularım | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+          <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Randevularım</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+      {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+          {% for rs in randevu %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-img">
+                    <h3><a href="/program/{{ rs.program.id }}/{{ rs.program.slug }}">{{ rs.program.title }}</a></h3>
+                  <a href="/program/{{ rs.program.id }}/{{ rs.program.slug }}"><img src="{{ rs.program.image.url }}" alt="" class="img-fluid"></a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote">RANDEVU BİLGİLERİ</span>
+                </div>
+                <div class="testimonials-content">
+                    <h2>ADI SOYADI: {{ user.first_name }} {{ user.last_name }}</h2>
+                  <p class="testimonial-text">
+                    <b>TARİH:</b> {{ rs.date }}<br>
+                      <b>SAAT:</b> {{ rs.time }}<br>
+                      <b>YAŞ:</b> {{ rs.yas }}<br>
+                      <b>BOY:</b> {{ rs.boy }}<br>
+                      <b>KİLO:</b> {{ rs.kilo }}<br>
+                  </p>
+
+                    <p class="testimonial-text">
+                        FİYAT: <b>{{ rs.program.price }} TL</b>
+                  </p>
+                    {% if rs.status == 'Odeme Yapilmadi' %}
+                    <p class="testimonial-text">
+                        RANDEVU DURUMU: <b>ÖDEME YAPILMADI!</b><img src="https://media.giphy.com/media/B0uJ6d5OXb50k/giphy.gif" style="height: 30px; width: 30px;"/>
+                  </p>
+                    {% else %}
+                    <p class="testimonial-text">
+                        RANDEVU DURUMU: <b>ÖDENDİ!</b><img src="https://istalya.com/image/cache/catalog/resimler/blog/mavi-tik-335x200h.png" style="height: 30px; width: 30px;"/>
+                  </p>
+                    {% endif %}
+                </div>
+                  {% if rs.status == 'Odeme Yapilmadi' %}
+                      <a href="/randevu/order/{{ rs.id }}" class="btn btn-a">ÖDEME YAP</a>
+                  {% else %}
+                      <a href="/user/orders" class="btn btn-a">DİYET PROGRAMINI GÖR</a>
+                  {% endif %}
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+ {% endblock %}

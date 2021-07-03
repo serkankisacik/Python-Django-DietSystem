@@ -1,0 +1,235 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} {{ program.title }} | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{ program.title }}</h1>
+            <span class="color-text-a">{{ program.category.title }}</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Anasayfa</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/">Programlar</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{ program.title }}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Single Star /-->
+  <section class="property-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+{% for rs in image %}
+            <div class="carousel-item-b">
+              <img src="{{rs.image.url}}" alt="">
+            </div>
+{% endfor %}
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-md-5 col-lg-4">
+              <div class="property-price d-flex justify-content-center foo">
+                <div class="card-header-c d-flex">
+
+                  <div class="card-title-c align-self-center">
+                  <div class="property-summary">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d section-t4">
+                      <h3 class="title-d">Bilgiler</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="summary-list">
+                  <ul class="list">
+                    <li class="d-flex justify-content-between">
+                      <strong>Program: </strong>
+                      <span>{{program.title}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Fiyat:</strong>
+                      <span><b>{{program.price}}</b>TL</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Diyetler:</strong>
+                      <span>{{program.category.title}}</span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+                  <div class="form-comments">
+            <div class="title-box-d">
+              <h3 class="title-d"> Randevu Al</h3>
+                {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+            </div>
+            <form class="form-a" name="randevuform" action="/randevu/randevual/{{ program.id }}" method="post">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Tarih</label>
+                    <input type="date" class="form-control form-control-lg form-control-a" name="date" id="date"
+                      required>
+                  </div>
+                </div>
+              <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Saat</label>
+                    <input type="time" class="form-control form-control-lg form-control-a" name="time" id="time"
+                      required>
+                  </div>
+                </div>
+              <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Kilo</label>
+                    <input type="number" class="form-control form-control-lg form-control-a" name="kilo" id="kilo"
+                      required>
+                  </div>
+                </div>
+              <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Yaş</label>
+                    <input type="number" class="form-control form-control-lg form-control-a" name="yas" id="yas"
+                      required>
+                  </div>
+                </div>
+              <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Boy(cm)</label>
+                    <input type="number" class="form-control form-control-lg form-control-a" name="boy" id="boy"
+                      required>
+                  </div>
+                </div>
+
+                  {% if user.id is not None %}
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-a">Randevu Al</button>
+                </div>
+                  {% else %}
+                  <div class="col-md-12">
+                  <a href="/login" class="btn btn-a">Giriş Yap</a>
+                </div>
+                  {% endif %}
+              </div>
+            </form>
+          </div>
+                    <div class="title-box-d">
+            <h3 class="title-d">Yorumlar</h3>
+          </div>
+          <div class="box-comments">
+            <ul class="list-comments">
+                {% for rs in comments %}
+              <li>
+
+                <div class="comment-details">
+                  <h4 class="comment-author">{{ rs.comment }}</h4>
+                  <span>{{ rs.create_at }}</span>
+                  <p class="comment-description">
+                    {{ rs.user.first_name }} {{ rs.user.last_name }}
+                  </p>
+
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-7 col-lg-7 section-md-t3">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Detaylar</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="property-description">
+                <p class="description color-text-a">
+                  {{  program.detail | safe}}
+                </p>
+
+              </div>
+
+ <div class="amenities-list color-text-a">
+   <section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Yorum Yap</h3>
+          </div>
+        </div>
+        <form class="form-a" action="/program/addcomment/{{ program.id }}" method="post">
+                                                {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Subject</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="subject" id="subject" placeholder="Subject"
+                      required>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="comment">Enter message</label>
+                    <textarea id="comment" class="form-control" placeholder="Comment *" name="comment" cols="45"
+                      rows="8" required></textarea>
+                  </div>
+                </div>
+                  {% if user.id is not None %}
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-a">Send Message</button>
+                </div>
+                  {% else %}
+                  <div class="col-md-12">
+                  <a href="/login" class="btn btn-a">Giriş Yap</a>
+                </div>
+                  {% endif %}
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Property Single End /-->
+ {% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Yorumlarım | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+          <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Yorumlarım</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+          {% for rs in comment %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-img">
+                    <h3><a href="/program/{{ rs.program.id }}/{{ rs.program.slug }}">{{ rs.program.title }}</a></h3>
+                  <a href="/program/{{ rs.program.id }}/{{ rs.program.slug }}"><img src="{{ rs.program.image.url }}" alt="" class="img-fluid"></a>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote"></span>
+                </div>
+                <div class="testimonials-content">
+                    <h2>{{ rs.subject }}</h2>
+                  <p class="testimonial-text">
+                    {{ rs.comment }}
+                  </p>
+                    <p>{{ rs.status }}</p>
+                </div>
+
+                    <a href="/user/commentdelete/{{ rs.id }}" class="btn btn-a" onclick="return confirm('Yorum Siliniyor... Emin misiniz?')">SİL</a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+
+ {% endblock %}

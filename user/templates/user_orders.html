@@ -1,0 +1,85 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Satın Aldıklarım | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+          <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Satın Aldıklarım</h2>
+                {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+
+          {% for rs in orders %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-img" style="text-align: center;">
+                <h4>Diyet Programı</h4>
+                    {% if rs.status == 'Accepted' %}
+                    <p>{{ rs.diyetisyennotu | safe }}</p>
+                    {% else %}
+                    <h2>Diyetisyenin Programı Yüklemesi Bekleniyor!</h2>
+                        <img src="https://media.giphy.com/media/sSgvbe1m3n93G/giphy.gif" style="height: 300px; width: 300px;"/>
+                    {% endif %}
+
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote">SATIN ALMA BİLGİLERİ</span>
+                </div>
+                <div class="testimonials-content">
+
+                  <p class="testimonial-text">
+                    <b>ADI:</b> {{ rs.first_name }}<br>
+                      <b>SOYADI:</b> {{ rs.last_name }}<br>
+                      <b>TELEFON:</b> {{ rs.phone }}<br>
+                      <b>ŞEHİR:</b> {{ rs.city }}<br>
+                      <b>ÜLKE:</b> {{ rs.country }}<br>
+                      <b>BOY:</b> {{ rs.randevu.boy }}<br>
+                      <b>KİLO:</b> {{ rs.randevu.kilo }}<br>
+                      <b>YAŞ:</b> {{ rs.randevu.yas }}<br>
+                      <b>SAAT:</b> {{ rs.randevu.time }}<br>
+                      <b>TARİH:</b> {{ rs.randevu.date }}<br>
+                  </p>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+ {% endblock %}

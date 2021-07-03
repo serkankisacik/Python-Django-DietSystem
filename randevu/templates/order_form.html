@@ -1,0 +1,143 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Ödeme Sayfası | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Ödeme Sayfası</h1>
+            <span class="color-text-a">
+            </span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Anasayfa</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Ödeme Sayfası
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-8" style="padding-top: 150px;">
+
+            <div class="title-box-d">
+                {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+            <h3 class="title-d">Kişi Bilgileri</h3>
+          </div>
+   <form action="" method="post" class="form-a" enctype="multipart/form-data">
+       {% csrf_token %}
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Adı</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="first_name" value="{{ user.first_name }}" placeholder="Adı"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Soyadı</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="last_name" value="{{ user.last_name }}" placeholder="Soyadı"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Telefon</label>
+                    <input type="number" class="form-control form-control-lg form-control-a" name="phone" value="{{ profile.phone }}" placeholder="Telefon"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Adres</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="address" value="{{ profile.address }}" placeholder="Adres"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Şehir</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="city" value="{{ profile.city }}" placeholder="Şehir"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Ülke</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="country" value="{{ profile.country }}" placeholder="Ülke"
+                      required>
+                  </div>
+                </div>
+
+                    <div class="title-box-d" style="padding-left:200px;">
+            <h3 class="title-d">Ödeme Detayları</h3>
+          </div>
+
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Kredi Kartı İsmi</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="holder" value=""
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Kredi Kartı Numarası</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="number" value=""
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Kredi Kartı SKT Date/Year</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="ecpdate"  placeholder="mm/yy"
+                      required>
+                  </div>
+                </div>
+                    <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Güvenlik Numarası</label>
+                    <input type="password" class="form-control form-control-lg form-control-a" name="secnumber" value=""
+                      required>
+                  </div>
+                </div>
+
+
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-a">Ödemeyi Onayla</button>
+                </div>
+
+
+              </div>
+   </form>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+ {% endblock %}

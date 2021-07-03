@@ -1,0 +1,58 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} SSS | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+
+{% endblock %}
+
+{% block content %}
+<section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">FAQ</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+
+          {% for rs in faq %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-img">
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote">SSS</span>
+                </div>
+                <div class="testimonials-content">
+                  <p class="testimonial-text">
+                    {{ rs.question }}
+                  </p>
+                    <p>
+                    {{ rs.answer | safe }}
+                  </p>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+ {% endblock %}

@@ -1,0 +1,438 @@
+{% load static %}
+
+  <!--/ Property Star /-->
+  <section class="section-property section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Yeni Diyet Programları</h2>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div id="property-carousel" class="owl-carousel owl-theme">
+          {% for rs in lastprograms %}
+        <div class="carousel-item-b">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{{ rs.image.url }}" style="width: 600px; height: 400px;" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!--/ Property End /-->
+<section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Karışık Diyet Programları</h3>
+          </div>
+        </div>
+        <div class="row property-grid grid">
+          <div class="col-sm-12">
+
+          </div>
+            {% for rs in randomprograms %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ rs.image.url }}" style="width: 800px; height: 400px;" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Hastalıklarda Beslenme</h3>
+          </div>
+        </div>
+        <div class="row property-grid grid">
+          <div class="col-sm-12">
+
+          </div>
+            {% for rs in hastalikprograms %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ rs.image.url }}" style="width: 800px; height: 400px;" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Bebeklik, Çocukluk ve Ergenlik</h3>
+          </div>
+        </div>
+        <div class="row property-grid grid">
+          <div class="col-sm-12">
+
+          </div>
+            {% for rs in yasprograms %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ rs.image.url }}" style="width: 800px; height: 400px;" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Kişiye Özel Beslenme</h3>
+          </div>
+        </div>
+        <div class="row property-grid grid">
+          <div class="col-sm-12">
+
+          </div>
+            {% for rs in kisiprograms %}
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ rs.image.url }}" style="width: 800px; height: 400px;" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="agent-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 section-t8">
+          <div class="title-box-d">
+            <h3 class="title-d">Sporculara Özel Diyetler</h3>
+          </div>
+        </div>
+        <div class="row property-grid grid">
+          <div class="col-sm-12">
+
+          </div>
+            {% for rs in sporprograms %}
+
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ rs.image.url }}" style="width: 800px; height: 400px;" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{rs.title}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--/ footer Star /-->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Online Diyet</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                {{ setting.company }}
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> {{ setting.phone }}</li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> {{ setting.email }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">{{ setting.company }}</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <img src="{% static 'img/logom.png' %}" style="height: 100px; width: 100px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+          {% if user.id is not None %}
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Hesabım</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/user">Profilim</a>
+                </li>
+                  <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/user/randevu">Randevularım</a>
+                </li>
+                  <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/user/comments">Yorumlarım</a>
+                </li>
+                  <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/logout">Çıkış</a>
+                </li>
+              </ul>
+            </div>
+          {% else %}
+          <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Üye Ol & Giriş Yap!</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/login">Giriş Yap</a>
+                </li>
+                  <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="/signup">Kaydol</a>
+                </li>
+
+              </ul>
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

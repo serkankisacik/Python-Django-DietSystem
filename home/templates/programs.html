@@ -1,0 +1,103 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} {{ categorydata.title }} | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{ categorydata.title }}</h1>
+            <span class="color-text-a">Diyetler</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Ana Sayfa</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">Diyetler</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{ categorydata.title }}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+<section class="section-property section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">{{ categorydata.title }}</h2>
+            </div>
+            <div class="title-link">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="property-carousel" class="owl-carousel owl-theme">
+          {% for rs in programs %}
+        <div class="carousel-item-b">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="{{ rs.image.url }}" style="width: 600px; height: 400px;" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}">{{ rs.title }}</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <a href="/program/{{ rs.id }}/{{ rs.slug }}"><span class="price-a">RANDEVU AL</span></a>
+                  </div>
+                  <a href="/program/{{ rs.id }}/{{ rs.slug }}" class="link-a">Diyeti İNCELE!
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Adı</h4>
+                      <span>{{ rs.title }}
+                      </span>
+                    </li>
+
+                    <li>
+                      <h4 class="card-info-title">Diyet Türü</h4>
+                      <span>{{ rs.category.title }}</span>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+      </div>
+    </div>
+  </section>
+    <br><br>
+{% endblock %}

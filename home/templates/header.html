@@ -1,0 +1,80 @@
+{% load static %}
+<div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+
+  </div>
+  <!--/ Form Search End /-->
+{% load mptt_tags %}
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Diyetler
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% recursetree category %}
+              <a class="dropdown-item" href="/category/{{ node.id }}/{{ node.slug }}">{{ node.title}}
+                {% endrecursetree %}</a>
+
+            </div>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/hakkimizda">Hakkımızda</a>
+          </li>
+
+
+
+        {% if user.id is not None %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{ user.first_name }} {{ user.last_name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+                <a class="dropdown-item" href="/user">Profilim</a>
+                <a class="dropdown-item" href="/user/randevu">Randevularım</a>
+                <a class="dropdown-item" href="/user/orders">Diyet Programlarım</a>
+                <a class="dropdown-item" href="/user/comments">Yorumlarım</a>
+                <a class="dropdown-item" href="/logout">Çıkış</a>
+            </div>
+          </li>
+        {% else %}
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Giriş
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="/login">Giriş</a>
+                <a class="dropdown-item" href="/signup">Kaydol</a>
+            </div>
+          </li>
+
+
+        {% endif %}
+        </ul>
+      </div>
+    <a class="navbar-brand text-brand" href="/"><span class="color-b">{{ setting.title }}</span><img src="{% static 'img/logom.png' %}" style="height: 50px; width: 50px;"></a>
+
+    </div>
+  </nav>
+  <!--/ Nav End /-->

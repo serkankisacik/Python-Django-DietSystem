@@ -1,0 +1,77 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block title %} Giriş | {{ setting.title }} {% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block head %}
+    <link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+{% block content %}
+
+<!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Giriş</h1>
+            <span class="color-text-a">
+            </span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Anasayfa</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Giriş
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-8" style="padding-top: 150px;">
+                {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+   <form action="" method="post" class="form-a">
+       {% csrf_token %}
+    <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName">Username</label>
+                    <input type="text" class="form-control form-control-lg form-control-a" name="username" id="username" placeholder="Username"
+                      required>
+                  </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="comment">Password</label>
+                    <input type="password" class="form-control form-control-lg form-control-a" name="password" id="password" placeholder="Password"
+                      required>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-a">Giriş Yap</button>
+                </div>
+
+
+              </div>
+   </form>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+ {% endblock %}
